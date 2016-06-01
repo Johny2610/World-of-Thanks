@@ -26,7 +26,7 @@ public class Missile extends GameObject {
     }
 
     public void setRange(int range) {
-        
+        this.range = range;
     }
     
     @Override

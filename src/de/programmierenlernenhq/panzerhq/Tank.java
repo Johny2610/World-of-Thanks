@@ -37,7 +37,7 @@ public class Tank extends GameObject{
         
     public Tank(Coordinate position, double width, double height, double movingAngle, double movingDistance) {
         super(position, movingDistance, movingDistance);
-                
+               
         setMovingAngle(movingDistance);
         setMovingDistance(movingDistance);        
     }

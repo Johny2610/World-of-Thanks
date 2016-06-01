@@ -13,9 +13,9 @@ public abstract class GameObject {
     private double movingDistance;
 
     public GameObject(Coordinate objectPosition, double width, double height) {
-        
-        
-        
+       this.width = width; 
+       this.height = height; 
+       this.objectPosition = objectPosition; 
         
         
         
@@ -26,7 +26,7 @@ public abstract class GameObject {
     }
 
     public void setObjectPosition(Coordinate objectPosition) {
-        
+       this.objectPosition = objectPosition; 
     }
 
     public double getWidth() {
@@ -34,7 +34,7 @@ public abstract class GameObject {
     }
 
     public void setWidth(double width) {
-       
+       this.width = width;
     }
 
     public double getHeight() {
@@ -42,7 +42,7 @@ public abstract class GameObject {
     }
 
     public void setHeight(double height) {
-        
+       this.height = height; 
     }
 
     public double getMovingAngle() {
@@ -50,7 +50,7 @@ public abstract class GameObject {
     }
 
     public void setMovingAngle(double movingAngle) {
-       
+       this.movingAngle = movingAngle;
     }
 
     public double getMovingDistance() {
@@ -58,7 +58,7 @@ public abstract class GameObject {
     }
 
     public void setMovingDistance(double movingDistance) {
-        
+        this.movingDistance = movingDistance;
     }
     
     public boolean isLeftOf(GameObject that) {
