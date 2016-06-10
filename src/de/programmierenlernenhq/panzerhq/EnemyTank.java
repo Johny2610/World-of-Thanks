@@ -11,7 +11,14 @@ public class EnemyTank extends Tank{
     private Tank playersTank; 
     private boolean targetLocked = false;
     
-
+    /**
+     * @param position
+     * @param width
+     * @param height
+     * @param movingAngle
+     * @param movingDistance
+     * @param playersTank
+     */
     public EnemyTank(Coordinate position, double width, double height, double movingAngle, double movingDistance, Tank playersTank) {
         super(position, movingDistance, movingDistance, movingDistance, movingDistance);        
         this.playersTank = playersTank;
@@ -28,17 +35,27 @@ public class EnemyTank extends Tank{
         accelerateTank();
     }
     
-    
+    /**
+     * @return playersTank
+     */
     public Tank getPlayersTank() {
         return playersTank;
     }
+    /**
+     * @param playersTank
+     */
     public void setPlayersTank(Tank playersTank) {
         this.playersTank = playersTank;
     }
-
+    /**
+     * @return targetLocked
+     */
     public boolean isTargetLocked() {
         return targetLocked;
     }
+    /**
+     * @param targetLocked
+     */
     public void setTargetLocked(boolean targetLocked) {
         this.targetLocked = targetLocked;
     }
