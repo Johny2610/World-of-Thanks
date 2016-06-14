@@ -11,32 +11,24 @@ import java.awt.geom.RoundRectangle2D;
  * @author ProgrammierenLernenHQ
  */
 public class Missile extends GameObject {    
-   
+    
     private int range = 100;
-    /**
-     * @param position
-     * @param size
-     * @param movingAngle
-     * @param movingDistance
-     */
+    
     public Missile (Coordinate position, double size, double movingAngle, double movingDistance) {
         super(position, movingAngle, movingDistance);
         
         setMovingAngle(movingAngle);
         setMovingDistance(movingDistance);
     }
-    /**
-     * @return range
-     */
+
     public int getRange() {
-        return this.range;
+      return this.range;  
     }
-    /**
-     * @param range
-     */
+
     public void setRange(int range) {
-        this.range = range;
+      this.range = range;  
     }
+    
     @Override
     public void makeMove() {
         if (range > 0) super.makeMove();
@@ -52,7 +44,7 @@ public class Missile extends GameObject {
         AffineTransform transform = new AffineTransform();        
         RoundRectangle2D missileShape = new RoundRectangle2D.Double(getObjectPosition().getX(), 
                                                                     getObjectPosition().getY(), 
-                                                                    getWidth()*0.1, getHeight()*0.1, 3, 3); 
+                                                                    getWidth(), getHeight(), 3, 3); 
         
         transform.rotate(getMovingAngle(),missileShape.getCenterX(), missileShape.getCenterY());
         Shape transformedMissileShape = transform.createTransformedShape(missileShape);

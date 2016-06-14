@@ -64,11 +64,10 @@ public class GamePanel extends JPanel{
     }
     
     private void initGame () {
-    	System.out.println("***NO ERROR***");
         setBackgroundImage(1);
         createGameObjects();
         
-        t = new Timer(10, new ActionListener() {
+        t = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 doOnTick();     
@@ -121,7 +120,7 @@ public class GamePanel extends JPanel{
         initPlayersTank();
         
         missiles = new LinkedList<>();
-        enemyTank = new EnemyTank(new Coordinate(40,600), 100, 500, Math.toRadians(-20), 0, playersTank);
+        enemyTank = new EnemyTank(new Coordinate(40,600), 80, 50, Math.toRadians(-20), 0, playersTank);
     }
     
     private void initPlayersTank() {        
@@ -183,8 +182,8 @@ public class GamePanel extends JPanel{
                     enemyTank.setEnergy(enemyTank.getEnergy()-1);
                 }
                 else {
-                    double xStart = Math.random()*prefSize.width/3+300;
-                    double yStart = prefSize.height*1.05+300;
+                    double xStart = Math.random()*prefSize.width/3;
+                    double yStart = prefSize.height*1.05;
                     double enemyWidth = 70 + Math.random()*15;
                     double enemyHeight = 40 + Math.random()*15;
                     double angleStart = -80 + Math.random()*60;

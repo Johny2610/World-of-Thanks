@@ -13,7 +13,7 @@ import java.awt.geom.RoundRectangle2D;
 public class Tank extends GameObject{    
     
     public static final double TURNING_VELOCITY = 0.03;
-    public static final double DRIVING_VELOCIY = 6.00;
+    public static final double DRIVING_VELOCIY = 2.00;
     public static final int AMMO_LOADING_TIME = 50;
 
     private Shape transformedTankBody = new RoundRectangle2D.Double();
@@ -34,56 +34,45 @@ public class Tank extends GameObject{
     private int energyStart = 10;
     private boolean paintTankStatusBar = true;
     
-    /**    
-     * @param position
-     * @param width
-     * @param height
-     * @param movingAngle
-     * @param movingDistance
-     */
+        
     public Tank(Coordinate position, double width, double height, double movingAngle, double movingDistance) {
         super(position, width, height);
-               
+                
         setMovingAngle(movingAngle);
         setMovingDistance(movingDistance);        
     }
     
-    /**
-     * @return transformedTankBody;
-     */
+    
     public Shape getTransformedTankBody() {
-        return this.transformedTankBody;
+        return transformedTankBody;
     }
-    /**
-     * @param transformedTankBody
-     */
     public void setTransformedTankBody(Shape transformedTankBody) {
         this.transformedTankBody = transformedTankBody;
     }
-    
+
     public double getTurningVelocity() {
-        return this.turningVelocity;
+        return turningVelocity;
     }
     public void setTurningVelocity(double turningSpeed) {
         this.turningVelocity = turningSpeed;
     }
 
     public double getDrivingVelocity() {
-        return this.drivingVelocity;
+        return drivingVelocity;
     }
     public void setDrivingVelocity(double drivingSpeed) {
         this.drivingVelocity = drivingSpeed;
     }
             
     public double getAngleCannon() {
-        return this.angleCannon;
+        return angleCannon;
     }    
     public void setAngleCannon(double angle) {
         this.angleCannon = angle;
     }
     
     public boolean isAbleToShoot() {
-        return this.ableToShoot;
+        return ableToShoot;
     }
     public void setAbleToShoot(boolean ableToShoot) {
         this.ableToShoot = ableToShoot;
@@ -91,21 +80,21 @@ public class Tank extends GameObject{
     }
 
     public int getLoadingTime() {
-        return this.loadingTime;
+        return loadingTime;
     }
     public void setLoadingTime(int loadingTime) {
         this.loadingTime = loadingTime;
     }
 
     public Color getTurretColor() {
-        return this.turretColor;
+        return turretColor;
     }
     public void setTurretColor(Color turretColor) {
         this.turretColor = turretColor;
     }
 
     public Color getCannonColor() {
-        return this.cannonColor;
+        return cannonColor;
     }
     public void setCannonColor(Color cannonColor) {
         this.cannonColor = cannonColor;
@@ -119,14 +108,14 @@ public class Tank extends GameObject{
     }
 
     public int getEnergyStart() {
-        return this.energyStart;
+        return energyStart;
     }
     public void setEnergyStart(int energyStart) {
         this.energyStart = energyStart;
     }
 
     public boolean isPaintTankStatusBar() {
-        return this.paintTankStatusBar;
+        return paintTankStatusBar;
     }
     public void setPaintTankStatusBar(boolean paintTankStatusBar) {
         this.paintTankStatusBar = paintTankStatusBar;
@@ -169,7 +158,7 @@ public class Tank extends GameObject{
         Coordinate otherPosition = other.getObjectPosition();                       
         double otherCenterX = otherPosition.getX() + other.getWidth()/2;
         double otherCenterY = otherPosition.getY() + other.getHeight()/2;
-       
+
         return getTransformedTankBody().contains(otherCenterX,otherCenterY);        
     }
 
@@ -210,13 +199,13 @@ public class Tank extends GameObject{
 
         double tankCenterX = getObjectPosition().getX() + getWidth()*0.5;
         double tankCenterY = getObjectPosition().getY() + getHeight()*0.5;
-        double cannonLength = getWidth()*0.5;
+        double cannonLength = getWidth()*0.8;
 
         double missileSize = getWidth()*0.12;
         double missileAngle = getAngleCannon()+ getMovingAngle();
         Coordinate missileDirection = GameObject.polarToCartesianCoordinates(missileAngle);
-        double cannonEndX = missileDirection.getX() * (cannonLength * 2.5);
-        double cannonEndY = missileDirection.getY() * (cannonLength * 2.5);
+        double cannonEndX = missileDirection.getX() * cannonLength;
+        double cannonEndY = missileDirection.getY() * cannonLength;
 
         Coordinate missileStartPosition = new Coordinate(tankCenterX + cannonEndX - missileSize/2, 
                                                          tankCenterY + cannonEndY - missileSize/6);           
@@ -260,29 +249,22 @@ public class Tank extends GameObject{
                                                                       getObjectPosition().getY() + getHeight()*0.1,
                                                                       getWidth()*0.65, getHeight()*0.8, 15, 8);
 
-        RoundRectangle2D tankHit     = new RoundRectangle2D.Double(getObjectPosition().getX(), 
-        		getObjectPosition().getY(), getWidth(), getHeight(), 0, 0);
-        	
 
         AffineTransform transform = new AffineTransform();                        
         transform.rotate(getMovingAngle(),tankBody.getCenterX(), tankBody.getCenterY());              
-        
+
         g2d.setColor(Color.GRAY);
         Shape transformed = transform.createTransformedShape(tankBody);
         g2d.fill(transformed);
-        
-        g2d.setColor(Color.RED);
-        transformed = transform.createTransformedShape(tankHit);
-        g2d.fill(transformed);
-        
+
         setTransformedTankBody(transformed);
-		
+
         g2d.setColor(Color.BLACK);        
         transformed = transform.createTransformedShape(tankTrackLeft);
         g2d.fill(transformed);            
         transformed = transform.createTransformedShape(tankTrackRight);
         g2d.fill(transformed);                
-        
+
         transform.rotate(getAngleCannon(),tankBody.getCenterX(), tankBody.getCenterY());
 
         g2d.setColor(cannonColor);        
@@ -290,8 +272,7 @@ public class Tank extends GameObject{
         g2d.fill(transformed);                
         g2d.setColor(turretColor);        
         transformed = transform.createTransformedShape(tankTurret);
-        g2d.fill(transformed);
-                
+        g2d.fill(transformed);        
     }
 
     private void paintTankStatusBars(Graphics2D g2d) {
