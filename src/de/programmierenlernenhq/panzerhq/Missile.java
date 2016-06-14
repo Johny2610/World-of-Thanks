@@ -29,7 +29,7 @@ public class Missile extends GameObject {
      * @return range
      */
     public int getRange() {
-        return range;
+        return this.range;
     }
     /**
      * @param range

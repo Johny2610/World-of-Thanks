@@ -19,7 +19,7 @@ public class Coordinate {
      * @return x
      */
     public double getX() {
-        return x;
+        return this.x;
     }
     /**
      * @param x
@@ -31,7 +31,7 @@ public class Coordinate {
      * @return y
      */
     public double getY() {
-        return y;
+        return this.y;
     }
     /**
      * @param y

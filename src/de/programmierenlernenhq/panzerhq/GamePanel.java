@@ -68,7 +68,7 @@ public class GamePanel extends JPanel{
         setBackgroundImage(1);
         createGameObjects();
         
-        t = new Timer(20, new ActionListener() {
+        t = new Timer(10, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 doOnTick();     

@@ -13,7 +13,7 @@ import java.awt.geom.RoundRectangle2D;
 public class Tank extends GameObject{    
     
     public static final double TURNING_VELOCITY = 0.03;
-    public static final double DRIVING_VELOCIY = 2.00;
+    public static final double DRIVING_VELOCIY = 6.00;
     public static final int AMMO_LOADING_TIME = 50;
 
     private Shape transformedTankBody = new RoundRectangle2D.Double();
@@ -42,9 +42,9 @@ public class Tank extends GameObject{
      * @param movingDistance
      */
     public Tank(Coordinate position, double width, double height, double movingAngle, double movingDistance) {
-        super(position, movingDistance, movingDistance);
+        super(position, width, height);
                
-        setMovingAngle(movingDistance);
+        setMovingAngle(movingAngle);
         setMovingDistance(movingDistance);        
     }
     
@@ -52,7 +52,7 @@ public class Tank extends GameObject{
      * @return transformedTankBody;
      */
     public Shape getTransformedTankBody() {
-        return transformedTankBody;
+        return this.transformedTankBody;
     }
     /**
      * @param transformedTankBody
@@ -62,28 +62,28 @@ public class Tank extends GameObject{
     }
     
     public double getTurningVelocity() {
-        return turningVelocity;
+        return this.turningVelocity;
     }
     public void setTurningVelocity(double turningSpeed) {
         this.turningVelocity = turningSpeed;
     }
 
     public double getDrivingVelocity() {
-        return drivingVelocity;
+        return this.drivingVelocity;
     }
     public void setDrivingVelocity(double drivingSpeed) {
         this.drivingVelocity = drivingSpeed;
     }
             
     public double getAngleCannon() {
-        return angleCannon;
+        return this.angleCannon;
     }    
     public void setAngleCannon(double angle) {
         this.angleCannon = angle;
     }
     
     public boolean isAbleToShoot() {
-        return ableToShoot;
+        return this.ableToShoot;
     }
     public void setAbleToShoot(boolean ableToShoot) {
         this.ableToShoot = ableToShoot;
@@ -91,21 +91,21 @@ public class Tank extends GameObject{
     }
 
     public int getLoadingTime() {
-        return loadingTime;
+        return this.loadingTime;
     }
     public void setLoadingTime(int loadingTime) {
         this.loadingTime = loadingTime;
     }
 
     public Color getTurretColor() {
-        return turretColor;
+        return this.turretColor;
     }
     public void setTurretColor(Color turretColor) {
         this.turretColor = turretColor;
     }
 
     public Color getCannonColor() {
-        return cannonColor;
+        return this.cannonColor;
     }
     public void setCannonColor(Color cannonColor) {
         this.cannonColor = cannonColor;
@@ -119,14 +119,14 @@ public class Tank extends GameObject{
     }
 
     public int getEnergyStart() {
-        return energyStart;
+        return this.energyStart;
     }
     public void setEnergyStart(int energyStart) {
         this.energyStart = energyStart;
     }
 
     public boolean isPaintTankStatusBar() {
-        return paintTankStatusBar;
+        return this.paintTankStatusBar;
     }
     public void setPaintTankStatusBar(boolean paintTankStatusBar) {
         this.paintTankStatusBar = paintTankStatusBar;

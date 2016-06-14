@@ -20,7 +20,7 @@ public class EnemyTank extends Tank{
      * @param playersTank
      */
     public EnemyTank(Coordinate position, double width, double height, double movingAngle, double movingDistance, Tank playersTank) {
-        super(position, movingDistance, movingDistance, movingDistance, movingDistance);        
+        super(position, width, height, movingAngle, movingDistance);        
         this.playersTank = playersTank;
         
         setTurningVelocity(TURNING_VELOCITY/10 + Math.random() * 0.01);
@@ -39,7 +39,7 @@ public class EnemyTank extends Tank{
      * @return playersTank
      */
     public Tank getPlayersTank() {
-        return playersTank;
+        return this.playersTank;
     }
     /**
      * @param playersTank
@@ -51,7 +51,7 @@ public class EnemyTank extends Tank{
      * @return targetLocked
      */
     public boolean isTargetLocked() {
-        return targetLocked;
+        return this.targetLocked;
     }
     /**
      * @param targetLocked

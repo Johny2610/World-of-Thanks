@@ -29,7 +29,7 @@ public abstract class GameObject {
      * @return objectPosition
      */
     public Coordinate getObjectPosition() {
-        return objectPosition;
+        return this.objectPosition;
     }
     /**
      * @param objectPosition
@@ -38,10 +38,10 @@ public abstract class GameObject {
        this.objectPosition = objectPosition; 
     }
     /**
-     * @return (width+80)
+     * @return (width)
      */
     public double getWidth() {
-        return (width+80);
+        return this.width;
     }
     /**
      * @param width
@@ -50,10 +50,10 @@ public abstract class GameObject {
        this.width = width;
     }
     /**
-     * @return (height+60)
+     * @return (height)
      */
     public double getHeight() {
-        return (height+60);
+        return this.height;
     }
     /**
      * @param height
@@ -65,7 +65,7 @@ public abstract class GameObject {
      * @return movingAngle
      */
     public double getMovingAngle() {
-        return movingAngle;
+        return this.movingAngle;
     }
     /**
      * @param movingAngle
@@ -77,7 +77,7 @@ public abstract class GameObject {
      * @return movingDistance
      */
     public double getMovingDistance() {
-        return movingDistance;
+        return this.movingDistance;
     }
     /**
      * @param movingDistance
