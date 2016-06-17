@@ -27,6 +27,8 @@ public class GamePanel extends JPanel{
     
     public static final String IMAGE_DIR = "images/";
     
+    boolean god = false;
+    
     private final Dimension prefSize = new Dimension(1180, 780);
     
     private ImageIcon backgroundImage;
@@ -85,13 +87,13 @@ public class GamePanel extends JPanel{
                         }                            
                         break;
                         
-                    case VK_DOWN:                         
-                    case VK_UP: playersTank.stopTank(); break;
+                    case VK_S:                         
+                    case VK_W: playersTank.stopTank(); break;
                         
-                    case VK_LEFT:
-                    case VK_RIGHT: playersTank.stopTurningTank(); break;
+                    case VK_A:
+                    case VK_D: playersTank.stopTurningTank(); break;
                         
-                    case VK_W:
+                    case VK_Q:
                     case VK_E: playersTank.stopTurningCannon(); break;
                 }
             }
@@ -99,16 +101,26 @@ public class GamePanel extends JPanel{
             @Override
             public void keyPressed(KeyEvent e) {
                 switch(e.getKeyCode()) {                    
-                    case VK_LEFT: playersTank.turnTankLeft(); break;
-                    case VK_RIGHT: playersTank.turnTankRight(); break;
+                    case VK_A: playersTank.turnTankLeft(); break;
+                    case VK_D: playersTank.turnTankRight(); break;
                         
-                    case VK_UP: playersTank.accelerateTank(); break;
-                    case VK_DOWN: playersTank.decelerateTank(); break;
+                    case VK_W: playersTank.accelerateTank(); break;
+                    case VK_S: playersTank.decelerateTank(); break;
                         
-                    case VK_W: playersTank.turnCannonLeft(); break;
+                    case VK_Q: playersTank.turnCannonLeft(); break;
                     case VK_E: playersTank.turnCannonRight(); break;
+                    case VK_P:{ String input = Tastatur.leseText();
+                    			System.out.println(input);
+                    			switch(input){
+                    				case "god":{
+                    					god = true;
+                         			   System.out.println("god = " + god);
+                    				}
+                    			}
+                   }break;
+                   }
                 }
-            }
+            
         });
     }
 
@@ -162,6 +174,11 @@ public class GamePanel extends JPanel{
     
     private void doOnTick() {        
         
+    	if(god == true){
+    		playersTank.setEnergy(10);
+    		playersTank.setLoadingTime(0);
+    	}
+    	
         for (Iterator<Missile> itMissiles=missiles.iterator(); itMissiles.hasNext();) {
             Missile missile = itMissiles.next();
             missile.makeMove();
